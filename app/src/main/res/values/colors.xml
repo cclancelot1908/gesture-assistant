@@ -1,0 +1,27 @@
+<resources>
+    <!-- 品牌红（在 Apple Music 红基础上降一档饱和度，更耐看） -->
+    <color name="primary">#E63950</color>
+    <color name="primary_dark">#C42B41</color>
+    <color name="primary_soft">#FCEAEC</color>
+    <color name="accent">#E63950</color>
+
+    <!-- iOS grouped 背景灰 + 白卡片 + 分隔线灰 -->
+    <color name="bg">#F2F2F7</color>
+    <color name="surface">#F2F2F7</color>
+    <color name="card">#FFFFFF</color>
+    <color name="divider">#E5E5EA</color>
+
+    <color name="text_primary">#1C1C1E</color>
+    <color name="text_secondary">#8A8A8E</color>
+    <color name="text_on_primary">#FFFFFF</color>
+
+    <!-- 语义色（浅色）：输入底/描边/涟漪，night 版在 values-night 覆盖 -->
+    <color name="input_bg">#EFEFF4</color>
+    <color name="outline_stroke">#D9D9DE</color>
+    <color name="ripple_tint">#22E63950</color>
+
+    <color name="chip_on_bg">#E7F7F0</color>
+    <color name="chip_on_text">#0CA678</color>
+    <color name="chip_off_bg">#F0F1F5</color>
+    <color name="chip_off_text">#868E96</color>
+</resources>

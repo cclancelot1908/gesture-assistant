@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:fitsSystemWindows="true">
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="vertical">
+
+    <!-- 当前标签页的大标题与服务控制常驻顶部。 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="18dp"
+        android:paddingTop="22dp"
+        android:paddingBottom="12dp">
+
+        <TextView
+            android:id="@+id/appTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="背部轻点"
+            android:textColor="@color/text_primary"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/serviceStatus"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="未运行"
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp" />
+
+            <Switch
+                android:id="@+id/serviceSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/divider" />
+
+    <FrameLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1">
+
+        <!-- 背部轻点 -->
+        <ScrollView
+            android:id="@+id/tabBackTap"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:scrollbars="none">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:clipToPadding="false"
+                android:paddingHorizontal="18dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="110dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:lineSpacingExtra="2dp"
+                    android:text="轻敲手机后盖两下 / 三下，触发你为它绑定的动作（手电筒、Webhook、打开 App 等）。\n需先打开右上角总开关，才能启用本页检测。"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="13sp" />
+
+                <LinearLayout
+                    android:id="@+id/backTapSwitchCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/card_bg"
+                    android:gravity="center_vertical"
+                    android:minHeight="52dp"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="16dp">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="背部检测" android:textColor="@color/text_primary" android:textSize="16sp" />
+                    <Switch android:id="@+id/backTapSwitch" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <TextView style="@style/GroupedSectionLabel" android:text="触发动作" />
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/card_bg" android:orientation="vertical">
+                    <LinearLayout
+                        android:id="@+id/backDoubleRow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center_vertical"
+                        android:minHeight="52dp"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="16dp">
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="双击" android:textColor="@color/text_primary" android:textSize="16sp" />
+                        <TextView android:id="@+id/backDoubleValue" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:text="切换手电筒" android:textColor="@color/primary" android:textSize="16sp" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="8dp" android:text="›" android:textColor="@color/text_secondary" android:textSize="18sp" />
+                    </LinearLayout>
+                    <View android:layout_width="match_parent" android:layout_height="0.5dp" android:layout_marginStart="16dp" android:background="@color/divider" />
+                    <LinearLayout
+                        android:id="@+id/backTripleRow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center_vertical"
+                        android:minHeight="52dp"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="16dp">
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="三击" android:textColor="@color/text_primary" android:textSize="16sp" />
+                        <TextView android:id="@+id/backTripleValue" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:text="媒体播放 / 暂停" android:textColor="@color/primary" android:textSize="16sp" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="8dp" android:text="›" android:textColor="@color/text_secondary" android:textSize="18sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView style="@style/GroupedSectionLabel" android:text="灵敏度 / 冷却" />
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/card_bg" android:orientation="vertical">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="70dp" android:orientation="vertical" android:paddingHorizontal="16dp" android:paddingVertical="8dp">
+                        <TextView android:id="@+id/sensitivityLabel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="灵敏度" android:textColor="@color/text_primary" android:textSize="16sp" />
+                        <SeekBar android:id="@+id/sensitivitySeekBar" android:layout_width="match_parent" android:layout_height="wrap_content" android:max="100" android:progressTint="@color/primary" android:thumbTint="@color/primary" />
+                    </LinearLayout>
+                    <View android:layout_width="match_parent" android:layout_height="0.5dp" android:layout_marginStart="16dp" android:background="@color/divider" />
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="70dp" android:orientation="vertical" android:paddingHorizontal="16dp" android:paddingVertical="8dp">
+                        <TextView android:id="@+id/cooldownLabel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="冷却时间" android:textColor="@color/text_primary" android:textSize="16sp" />
+                        <SeekBar android:id="@+id/cooldownSeekBar" android:layout_width="match_parent" android:layout_height="wrap_content" android:max="27" android:progressTint="@color/primary" android:thumbTint="@color/primary" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+        <!-- 空中手势 -->
+        <ScrollView android:id="@+id/tabAir" android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true" android:scrollbars="none" android:visibility="gone">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:clipToPadding="false" android:paddingHorizontal="18dp" android:paddingTop="16dp" android:paddingBottom="110dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:lineSpacingExtra="2dp"
+                    android:text="长按音量减键，在空中画出你录制的手势即可触发；可为不同手势绑定不同动作或智能家居设备。\n需先打开右上角总开关，才能启用本页检测。"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="13sp" />
+
+                <LinearLayout
+                    android:id="@+id/airGestureSwitchCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/card_bg"
+                    android:gravity="center_vertical"
+                    android:minHeight="52dp"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="16dp">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="空中手势" android:textColor="@color/text_primary" android:textSize="16sp" />
+                    <Switch android:id="@+id/airGestureSwitch" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <TextView style="@style/GroupedSectionLabel" android:text="无障碍服务" />
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/card_bg" android:orientation="vertical">
+                    <TextView android:id="@+id/accessibilityServiceStatus" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="52dp" android:gravity="center_vertical" android:paddingHorizontal="16dp" android:text="无障碍服务：未开启" android:textColor="@color/text_secondary" android:textSize="13sp" />
+                    <View android:layout_width="match_parent" android:layout_height="0.5dp" android:layout_marginStart="16dp" android:background="@color/divider" />
+                    <Button android:id="@+id/openAccessibilitySettingsButton" android:layout_width="match_parent" android:layout_height="52dp" android:background="?android:attr/selectableItemBackground" android:gravity="start|center_vertical" android:paddingHorizontal="16dp" android:text="打开无障碍设置  ›" android:textAllCaps="false" android:textColor="@color/primary" android:textSize="16sp" />
+                </LinearLayout>
+
+                <TextView style="@style/GroupedSectionLabel" android:text="识别" />
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/card_bg" android:minHeight="70dp" android:orientation="vertical" android:paddingHorizontal="16dp" android:paddingVertical="8dp">
+                    <TextView android:id="@+id/trajectoryThresholdLabel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="DTW 识别阈值" android:textColor="@color/text_primary" android:textSize="16sp" />
+                    <SeekBar android:id="@+id/trajectoryThresholdSeekBar" android:layout_width="match_parent" android:layout_height="wrap_content" android:max="180" android:progressTint="@color/primary" android:thumbTint="@color/primary" />
+                </LinearLayout>
+
+                <TextView style="@style/GroupedSectionLabel" android:text="已录手势" />
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/card_bg" android:orientation="vertical">
+                    <LinearLayout android:id="@+id/airGestureList" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" />
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp" android:background="@drawable/card_bg" android:orientation="vertical">
+                    <TextView android:id="@+id/trajectoryGestureSummary" android:layout_width="match_parent" android:layout_height="52dp" android:gravity="center_vertical" android:paddingHorizontal="16dp" android:text="已配置 0 个手势" android:textColor="@color/text_primary" android:textSize="16sp" />
+                    <View android:layout_width="match_parent" android:layout_height="0.5dp" android:layout_marginStart="16dp" android:background="@color/divider" />
+                    <Button android:id="@+id/openRecordingButton" android:layout_width="match_parent" android:layout_height="52dp" android:background="?android:attr/selectableItemBackground" android:gravity="start|center_vertical" android:paddingHorizontal="16dp" android:text="录入 / 管理手势  ›" android:textAllCaps="false" android:textColor="@color/primary" android:textSize="16sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+        <!-- 智能家居 -->
+        <ScrollView android:id="@+id/tabHome" android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true" android:scrollbars="none" android:visibility="gone">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:clipToPadding="false" android:paddingHorizontal="18dp" android:paddingTop="16dp" android:paddingBottom="110dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:lineSpacingExtra="2dp"
+                    android:text="局域网直连米家设备（不经云），在此开 / 关 / 切换灯与空调；也可在‘空中手势’里把手势绑定到设备。"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="13sp" />
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/card_bg" android:orientation="vertical">
+                    <Button android:id="@+id/cloudImportButton" android:layout_width="match_parent" android:layout_height="52dp" android:background="?android:attr/selectableItemBackground" android:gravity="start|center_vertical" android:paddingHorizontal="16dp" android:text="从小米云一键导入  ›" android:textAllCaps="false" android:textColor="@color/primary" android:textSize="16sp" />
+                    <View android:layout_width="match_parent" android:layout_height="0.5dp" android:layout_marginStart="16dp" android:background="@color/divider" />
+                    <Button android:id="@+id/importSmartDevicesButton" android:layout_width="match_parent" android:layout_height="52dp" android:background="?android:attr/selectableItemBackground" android:gravity="start|center_vertical" android:paddingHorizontal="16dp" android:text="手动导入（粘贴 JSON）  ›" android:textAllCaps="false" android:textColor="@color/primary" android:textSize="16sp" />
+                </LinearLayout>
+                <TextView style="@style/GroupedSectionLabel" android:text="设备" />
+                <TextView android:id="@+id/smartDeviceEmptyText" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:background="@drawable/card_bg" android:gravity="center" android:minHeight="52dp" android:text="尚未导入设备" android:textColor="@color/text_secondary" android:textSize="14sp" />
+                <LinearLayout android:id="@+id/smartDeviceList" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" />
+            </LinearLayout>
+        </ScrollView>
+
+        <!-- 设置 -->
+        <ScrollView android:id="@+id/tabSettings" android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true" android:scrollbars="none" android:visibility="gone">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:clipToPadding="false" android:paddingHorizontal="18dp" android:paddingTop="16dp" android:paddingBottom="110dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:lineSpacingExtra="2dp"
+                    android:text="授予权限并保持后台常驻，手势服务才能随时响应。"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="13sp" />
+
+                <TextView style="@style/GroupedSectionLabel" android:layout_marginTop="0dp" android:text="权限" />
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/card_bg" android:orientation="vertical">
+                    <Button android:id="@+id/notificationPermissionButton" android:layout_width="match_parent" android:layout_height="52dp" android:background="?android:attr/selectableItemBackground" android:gravity="start|center_vertical" android:paddingHorizontal="16dp" android:text="① 允许通知  ›" android:textAllCaps="false" android:textColor="@color/text_primary" android:textSize="16sp" />
+                    <View android:layout_width="match_parent" android:layout_height="0.5dp" android:layout_marginStart="16dp" android:background="@color/divider" />
+                    <Button android:id="@+id/batteryButton" android:layout_width="match_parent" android:layout_height="52dp" android:background="?android:attr/selectableItemBackground" android:gravity="start|center_vertical" android:paddingHorizontal="16dp" android:text="② 关闭电池优化  ›" android:textAllCaps="false" android:textColor="@color/text_primary" android:textSize="16sp" />
+                    <View android:layout_width="match_parent" android:layout_height="0.5dp" android:layout_marginStart="16dp" android:background="@color/divider" />
+                    <Button android:id="@+id/autoStartButton" android:layout_width="match_parent" android:layout_height="52dp" android:background="?android:attr/selectableItemBackground" android:gravity="start|center_vertical" android:paddingHorizontal="16dp" android:text="③ 自启动 / 后台运行  ›" android:textAllCaps="false" android:textColor="@color/text_primary" android:textSize="16sp" />
+                </LinearLayout>
+
+                <TextView style="@style/GroupedSectionLabel" android:text="后台" />
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/card_bg" android:gravity="center_vertical" android:minHeight="52dp" android:orientation="horizontal" android:paddingHorizontal="16dp">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="无声音频保活" android:textColor="@color/text_primary" android:textSize="16sp" />
+                    <Switch android:id="@+id/silentKeepAliveSwitch" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <TextView style="@style/GroupedSectionLabel" android:text="应用" />
+                <Button
+                    android:id="@+id/aboutAppButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:background="@drawable/card_bg"
+                    android:gravity="start|center_vertical"
+                    android:paddingHorizontal="16dp"
+                    android:text="关于该应用  ›"
+                    android:textAllCaps="false"
+                    android:textColor="@color/text_primary"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </ScrollView>
+    </FrameLayout>
+  </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/tabBarContainer"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_gravity="bottom"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="14dp"
+        android:background="@drawable/floating_tab_bg"
+        android:clipToOutline="true"
+        android:elevation="12dp"
+        android:outlineProvider="background">
+
+        <View
+            android:id="@+id/tabIndicator"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="top|start"
+            android:layout_marginVertical="6dp"
+            android:background="@drawable/tab_indicator_bg" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <LinearLayout android:id="@+id/tabBtnBackTap" style="@style/BottomTabItem">
+                <ImageView android:id="@+id/tabBtnBackTapIcon" style="@style/BottomTabIcon" android:src="@drawable/ic_tab_backtap" android:tint="@color/primary" />
+                <TextView android:id="@+id/tabBtnBackTapLabel" style="@style/BottomTabLabel" android:text="背部轻点" android:textColor="@color/primary" />
+            </LinearLayout>
+            <LinearLayout android:id="@+id/tabBtnAir" style="@style/BottomTabItem">
+                <ImageView android:id="@+id/tabBtnAirIcon" style="@style/BottomTabIcon" android:src="@drawable/ic_tab_air" android:tint="@color/text_secondary" />
+                <TextView android:id="@+id/tabBtnAirLabel" style="@style/BottomTabLabel" android:text="空中手势" />
+            </LinearLayout>
+            <LinearLayout android:id="@+id/tabBtnHome" style="@style/BottomTabItem">
+                <ImageView android:id="@+id/tabBtnHomeIcon" style="@style/BottomTabIcon" android:src="@drawable/ic_tab_home" android:tint="@color/text_secondary" />
+                <TextView android:id="@+id/tabBtnHomeLabel" style="@style/BottomTabLabel" android:text="智能家居" />
+            </LinearLayout>
+            <LinearLayout android:id="@+id/tabBtnSettings" style="@style/BottomTabItem">
+                <ImageView android:id="@+id/tabBtnSettingsIcon" style="@style/BottomTabIcon" android:src="@drawable/ic_tab_settings" android:tint="@color/text_secondary" />
+                <TextView android:id="@+id/tabBtnSettingsLabel" style="@style/BottomTabLabel" android:text="设置" />
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+</FrameLayout>

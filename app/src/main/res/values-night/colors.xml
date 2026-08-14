@@ -1,0 +1,25 @@
+<resources>
+    <!-- 深色（iOS 分组暗色）：纯黑底 + 深灰卡片 -->
+    <color name="primary">#FF4A61</color>
+    <color name="primary_dark">#C42B41</color>
+    <color name="primary_soft">#3A2024</color>
+    <color name="accent">#FF4A61</color>
+
+    <color name="bg">#000000</color>
+    <color name="surface">#000000</color>
+    <color name="card">#1C1C1E</color>
+    <color name="divider">#38383A</color>
+
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#98989E</color>
+    <color name="text_on_primary">#FFFFFF</color>
+
+    <color name="input_bg">#2C2C2E</color>
+    <color name="outline_stroke">#48484A</color>
+    <color name="ripple_tint">#33FF4A61</color>
+
+    <color name="chip_on_bg">#12362B</color>
+    <color name="chip_on_text">#34D399</color>
+    <color name="chip_off_bg">#2C2C2E</color>
+    <color name="chip_off_text">#98989E</color>
+</resources>

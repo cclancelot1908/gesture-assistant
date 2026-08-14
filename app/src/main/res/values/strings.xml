@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">手势助手</string>
+    <string name="gesture_accessibility_description">长按音量减键采集空中轨迹，并执行轨迹或背部轻点绑定的系统操作；短按仍正常降低媒体音量。</string>
+    <string name="about_website_url">https://zheteng95.xyz</string>
+</resources>

@@ -1,0 +1,24 @@
+# 构建产物
+build/
+app/build/
+.gradle/
+local.properties
+captures/
+*.iml
+.idea/
+
+# 签名密钥与密码（绝不可提交/公开）
+keystore/
+keystore.properties
+*.jks
+*.keystore
+
+# 含真实设备 token 的本地文件（隐私）
+devices.json
+app/devices.json
+
+# 系统
+.DS_Store
+
+# 打包产物
+*.apk
