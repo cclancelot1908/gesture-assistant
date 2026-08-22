@@ -512,22 +512,32 @@ class RecordingActivity : AppCompatActivity() {
         addView(quietButton("删除“${gesture.name}”") { confirmDelete(gesture) }, LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, dp(40)).apply { topMargin = dp(8) })
     }
 
-    private fun createPreviewSection(gesture: TrajectoryGesture) = HorizontalScrollView(this).apply {
-        isHorizontalScrollBarEnabled = false
-        addView(LinearLayout(context).apply {
-            orientation = LinearLayout.HORIZONTAL
-            gesture.templates.forEachIndexed { index, template ->
-                addView(LinearLayout(context).apply {
-                    orientation = LinearLayout.VERTICAL
-                    addView(GesturePreviewView(context).apply {
-                        background = ContextCompat.getDrawable(context, R.drawable.card_bg)
-                        setWaveform(template)
-                    }, LinearLayout.LayoutParams(dp(84), dp(84)))
-                    addView(quietButton("删除") {
-                        lifecycleScope.launch { runCatching { store.deleteTemplate(gesture.id, index) }.onFailure { showError("模板删除失败", it) } }
-                    }, LinearLayout.LayoutParams(dp(84), dp(34)))
-                }, LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT).apply { rightMargin = dp(8) })
-            }
+    private fun createPreviewSection(gesture: TrajectoryGesture) = LinearLayout(this).apply {
+        orientation = LinearLayout.VERTICAL
+        // 说明:曲线=成功采集到的一次轨迹;画得不好的可单条删除,识别只用剩下的。
+        addView(TextView(context).apply {
+            text = "每条曲线 = 成功采集到的一次轨迹（画得太短或没采到就不会出现）。觉得哪次动作没做好，点它下方“删除”移除即可，识别只用保留下来的。"
+            textSize = 12f
+            setTextColor(color(R.color.text_secondary))
+            setLineSpacing(dp(2).toFloat(), 1f)
+        }, LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT).apply { topMargin = dp(4); bottomMargin = dp(8) })
+        addView(HorizontalScrollView(context).apply {
+            isHorizontalScrollBarEnabled = false
+            addView(LinearLayout(context).apply {
+                orientation = LinearLayout.HORIZONTAL
+                gesture.templates.forEachIndexed { index, template ->
+                    addView(LinearLayout(context).apply {
+                        orientation = LinearLayout.VERTICAL
+                        addView(GesturePreviewView(context).apply {
+                            background = ContextCompat.getDrawable(context, R.drawable.card_bg)
+                            setWaveform(template)
+                        }, LinearLayout.LayoutParams(dp(84), dp(84)))
+                        addView(quietButton("删除") {
+                            lifecycleScope.launch { runCatching { store.deleteTemplate(gesture.id, index) }.onFailure { showError("模板删除失败", it) } }
+                        }, LinearLayout.LayoutParams(dp(84), dp(34)))
+                    }, LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT).apply { rightMargin = dp(8) })
+                }
+            })
         })
     }
 
