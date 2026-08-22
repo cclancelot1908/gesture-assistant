@@ -286,7 +286,7 @@ class MainActivity : AppCompatActivity() {
             binding.cooldownSeekBar.progress = ((current.cooldownMs - 300L) / 100L).toInt()
             binding.cooldownLabel.text = "冷却时间：${current.cooldownMs} ms"
             binding.trajectoryThresholdSeekBar.progress = ((current.trajectoryThreshold - 0.2f) * 100f).toInt()
-            binding.trajectoryThresholdLabel.text = "DTW 识别阈值：${"%.2f".format(current.trajectoryThreshold)}（越小越严格）"
+            binding.trajectoryThresholdLabel.text = "识别灵敏度：${"%.2f".format(current.trajectoryThreshold)}（越高越容易识别，过高易误触）"
             binding.backTapSwitch.setOnCheckedChangeListener(null)
             binding.backTapSwitch.isChecked = current.backTapEnabled
             binding.backTapSwitch.setOnCheckedChangeListener { _, checked ->
@@ -314,7 +314,7 @@ class MainActivity : AppCompatActivity() {
         })
         binding.trajectoryThresholdSeekBar.setOnSeekBarChangeListener(seekListener { progress, fromUser ->
             val threshold = 0.2f + progress / 100f
-            binding.trajectoryThresholdLabel.text = "DTW 识别阈值：${"%.2f".format(threshold)}（越小越严格）"
+            binding.trajectoryThresholdLabel.text = "识别灵敏度：${"%.2f".format(threshold)}（越高越容易识别，过高易误触）"
             if (fromUser) lifecycleScope.launch { runCatching { settings.setTrajectoryThreshold(threshold) } }
         })
     }

@@ -54,8 +54,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
-                    android:text="录制动作轨迹，并为每个手势绑定执行动作"
+                    android:text="录制动作轨迹，并为每个手势绑定执行动作。\n同一手势录入越多次，识别成功率越高。"
                     android:textColor="@color/text_secondary"
+                    android:lineSpacingExtra="2dp"
                     android:textSize="13sp" />
             </LinearLayout>
         </LinearLayout>

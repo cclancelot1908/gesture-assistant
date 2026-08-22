@@ -178,7 +178,7 @@
 
                 <TextView style="@style/GroupedSectionLabel" android:text="识别" />
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/card_bg" android:minHeight="70dp" android:orientation="vertical" android:paddingHorizontal="16dp" android:paddingVertical="8dp">
-                    <TextView android:id="@+id/trajectoryThresholdLabel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="DTW 识别阈值" android:textColor="@color/text_primary" android:textSize="16sp" />
+                    <TextView android:id="@+id/trajectoryThresholdLabel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="识别灵敏度" android:textColor="@color/text_primary" android:textSize="16sp" />
                     <SeekBar android:id="@+id/trajectoryThresholdSeekBar" android:layout_width="match_parent" android:layout_height="wrap_content" android:max="180" android:progressTint="@color/primary" android:thumbTint="@color/primary" />
                 </LinearLayout>
 

@@ -297,7 +297,7 @@ class RecordingActivity : AppCompatActivity() {
             }, LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT).apply { topMargin = dp(12) })
             addView(TextView(context).apply {
                 // 识别取最近模板、不求平均：想支持多种握法就每种各录≥2条，触发时自动命中最近的那种。
-                text = "小贴士：识别取最近的一条模板，不合并。想正着、倒着都能用？就每种握法各画 2 条以上，触发时会自动命中最近的那种。"
+                text = "小贴士：录得越多，识别越准。识别取最近的一条模板，不合并——想正着、倒着都能用？就每种握法各画 2 条以上，触发时自动命中最近的那种。"
                 textSize = 13f
                 setTextColor(color(R.color.text_secondary))
             }, LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT).apply { topMargin = dp(8) })
@@ -392,7 +392,7 @@ class RecordingActivity : AppCompatActivity() {
             }, LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT).apply { topMargin = dp(14) })
             addView(TextView(context).apply {
                 // 与引导录入同款提示：识别取最近模板，支持多握法——每种握法各录≥2条即可。
-                text = "小贴士：识别取最近的一条模板，不合并。想支持多种握法，就每种各画 2 条以上，触发时自动命中最近的那种。"
+                text = "小贴士：录得越多，识别越准。识别取最近的一条模板，不合并——想支持多种握法，就每种各画 2 条以上，触发时自动命中最近的那种。"
                 textSize = 13f
                 gravity = Gravity.CENTER
                 setTextColor(color(R.color.text_secondary))
