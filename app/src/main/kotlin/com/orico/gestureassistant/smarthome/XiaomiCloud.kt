@@ -366,11 +366,23 @@ class XiaomiCloud(private val saved: XiaomiSession? = null) {
         val sts = request("GET", stsUrl, followRedirects = true)
         serviceToken = findCookie("serviceToken", ".sts.api.io.mi.com")
         if (serviceToken.isBlank()) serviceToken = findCookie("serviceToken")
-        // 2FA 分支不走 rememberLogin，userId/cUserId 仍为空会导致后续加密接口鉴权失败——从 cookie 补齐。
-        if (userId.isBlank()) userId = findCookie("userId")
+        // 2FA 分支不走 rememberLogin。必须拿“数字 userId”：登录时塞过一个 userId=账号(手机/邮箱)的 cookie，
+        // findCookie 可能返回它 → 拉设备鉴权 401。改从跳转 URL 的 userId= 取纯数字，cookie 只作纯数字兜底。
+        if (userId.isBlank() || !userId.all { it.isDigit() }) {
+            userId = sequenceOf(queryValue(endUrl, "userId"), queryValue(finishLocation, "userId"))
+                .firstOrNull { it.isNotBlank() && it.all { c -> c.isDigit() } }
+                ?: numericUserIdCookie()
+                ?: userId
+        }
         if (cUserId.isBlank()) cUserId = findCookie("cUserId")
         return if (serviceToken.isBlank()) "两步验证后未取得 serviceToken" else null
     }
+
+    /** 从 cookie 里挑一个“纯数字”的 userId，避开登录时塞入的账号(手机/邮箱)值。 */
+    private fun numericUserIdCookie(): String? = cookies.cookieStore.cookies
+        .filter { it.name == "userId" }
+        .map { it.value }
+        .firstOrNull { it.isNotBlank() && it.all { c -> c.isDigit() } }
 
     private fun rememberLogin(json: JSONObject) {
         ssecurity = json.optString("ssecurity", ssecurity)
@@ -449,7 +461,7 @@ class XiaomiCloud(private val saved: XiaomiSession? = null) {
             ),
         )
         if (response.code != 200) {
-            lastApiError = "HTTP ${response.code}：${response.text.take(120)}"
+            lastApiError = "HTTP ${response.code}(uid=$userId stLen=${serviceToken.length} ssLen=${ssecurity.length})：${response.text.take(100)}"
             return null
         }
         val decrypted = runCatching {
